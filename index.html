@@ -282,6 +282,45 @@
   <p>I'm raising support to attend a 5-month Discipleship Training School with YWAM. Every gift brings me one step closer to this life-changing journey.</p>
 </div>
 
+<!-- PROGRESS BAR -->
+<div class="card">
+  <h2>Fundraising Progress</h2>
+  <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:0.5rem;">
+    <span style="font-size:0.9rem; color:#666; font-family:Arial,sans-serif;">Goal: €5,495</span>
+    <span style="font-family:Arial,sans-serif; font-weight:bold; color:#3c3489;" id="pb-pct"></span>
+  </div>
+  <div style="background:#eee; border-radius:999px; height:14px; overflow:hidden; margin-bottom:1rem;">
+    <div id="pb-fill" style="height:100%; background:#3c3489; border-radius:999px; width:0%;"></div>
+  </div>
+  <div style="display:flex; justify-content:space-between; text-align:center; font-family:Arial,sans-serif;">
+    <div>
+      <div style="font-size:1.1rem; font-weight:bold; color:#3c3489;" id="pb-raised"></div>
+      <div style="font-size:0.75rem; color:#999;">raised</div>
+    </div>
+    <div>
+      <div style="font-size:1.1rem; font-weight:bold; color:#2c2c2a;">€5,495</div>
+      <div style="font-size:0.75rem; color:#999;">goal</div>
+    </div>
+    <div>
+      <div style="font-size:1.1rem; font-weight:bold; color:#bbb;" id="pb-left"></div>
+      <div style="font-size:0.75rem; color:#999;">still needed</div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const RAISED = 0;      // ← only change this number
+  const GOAL   = 5495;
+
+  const pct  = Math.min(Math.round((RAISED / GOAL) * 100), 100);
+  const left = Math.max(GOAL - RAISED, 0);
+
+  document.getElementById('pb-fill').style.width   = pct + '%';
+  document.getElementById('pb-pct').textContent    = pct + '%';
+  document.getElementById('pb-raised').textContent = '€' + RAISED.toLocaleString();
+  document.getElementById('pb-left').textContent   = '€' + left.toLocaleString();
+</script>
+
 <div class="content">
 
   <div class="card">
@@ -298,10 +337,11 @@
     <ul class="cost-list">
       <li><span>Program fees and accommodation</span><span class="amount">€1375</span></li>
       <li><span>Outreach travel and expenses</span><span class="amount">€4000</span></li>
-      <li><span>Visa, vaccinations and gear</span><span class="amount">$400</span></li>
+      <li><span>Visa fees</span><span class="amount">€120</span></li>
     </ul>
   </div>
 
+  
   <!-- ===== DONATION CARD ===== -->
   <div class="donate-card">
     <h2>How to donate</h2>
